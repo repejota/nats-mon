@@ -1,5 +1,27 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .container-fluid.varz
+    h2 Variables
+    .row
+      .col-md-12
+        p Reports various general statistics.
+  hr
+  .container-fluid.connz
+    h2 Connections
+    .row
+      .col-md-12
+        p Reports more detailed information on current connections.
+  hr
+  .container-fluid.routez
+    h2 Routes
+    .row
+      .col-md-12
+        p Reports information on active routes for a cluster.
+  hr
+  .container-fluid.subscriptionz
+    h2 Subscriptions
+    .row
+      .col-md-12
+        p Reports detailed information about the current subscriptions and the routing data structure.
+  hr
