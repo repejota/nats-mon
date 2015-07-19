@@ -10,11 +10,11 @@ router.get('/', function(req, res, next) {
     request('http://localhost:8222/varz', function(error, response, body) {
         if (!error && response.statusCode == 200) {
             context.varz = JSON.parse(body);
+            res.render('index', context);
         } else {
             next(error);
         }
     });
-    res.render('index', context);
 });
 
 module.exports = router;

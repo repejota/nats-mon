@@ -4,8 +4,26 @@ block content
     .container-fluid.varz
         h2 Variables
         .row
-            .col-md-12
-                p Reports various general statistics.
+            .col-md-6
+                strong Started:
+                span= moment(varz.start).format('MM/DD/YYYY')
+            .col-md-6
+                strong Uptime:
+                span= varz.uptime
+        .row
+            .col-md-6
+                strong In Bytes:
+                span= varz.in_bytes
+            .col-md-6
+                strong Out Bytes:
+                span= varz.out_bytes
+        .row
+            .col-md-6
+                strong In Messages:
+                span= varz.in_msgs
+            .col-md-6
+                strong Out Messages:
+                span= varz.out_msgs
     hr
     .container-fluid.connz
         h2 Connections

@@ -12,6 +12,7 @@
     "express": "~4.13.1",
     "jade": "~1.11.0",
     "less-middleware": "1.0.x",
+    "moment": "^2.10.3",
     "morgan": "~1.6.1",
     "request": "^2.58.0",
     "serve-favicon": "~2.3.0"
