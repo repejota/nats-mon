@@ -27,9 +27,33 @@ block content
     hr
     .container-fluid.connz
         h2 Connections
+            small= connz.num_connections
         .row
             .col-md-12
                 p Reports more detailed information on current connections.
+        .row
+            .col-md-12
+                table.table
+                    thead
+                        tr
+                            th cid
+                            th ip
+                            th port
+                            th in msgs
+                            th out msgs
+                            th in bytes
+                            th out bytes
+                    tbody
+                        each con in connz.connections
+                            tr
+                                td= con.cid
+                                td= con.ip
+                                td= con.port
+                                td= con.in_msgs
+                                td= con.out_msgs
+                                td= con.in_bytes
+                                td= con.out_bytes
+
     hr
     .container-fluid.routez
         h2 Routes
