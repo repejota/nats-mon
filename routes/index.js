@@ -1,9 +1,20 @@
 var express = require('express');
+var request = require('request');
+
 var router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'NATS.io monitor' });
+    var context = {
+        title: 'NATS.io monitor'
+    };
+    request('http://localhost:8222/varz', function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            context.varz = JSON.parse(body);
+        } else {
+            next(error);
+        }
+    });
+    res.render('index', context);
 });
 
 module.exports = router;
