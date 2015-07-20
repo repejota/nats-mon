@@ -13,17 +13,17 @@ block content
         .row.info
             .col-md-6
                 strong In Bytes:
-                span= " " + byteSize(varz.in_bytes, 2)
+                span= " " + numeral(varz.in_bytes).format('0.00 b')
             .col-md-6
                 strong Out Bytes:
-                span= " " + byteSize(varz.out_bytes, 2)
+                span= " " + numeral(varz.out_bytes).format('0.00 b')
         .row.info
             .col-md-6
                 strong In Messages:
-                span= " " + varz.in_msgs
+                span= " " + numeral(varz.in_msgs).format('0,0')
             .col-md-6
                 strong Out Messages:
-                span= " " + varz.out_msgs
+                span= " " + numeral(varz.out_msgs).format('0,0')
     hr
     .container-fluid.connz
         h2 Connections
@@ -49,9 +49,9 @@ block content
                                 td= con.cid
                                 td= con.ip
                                 td= con.port
-                                td= con.in_msgs
-                                td= con.out_msgs
-                                td= byteSize(con.in_bytes, 2)
-                                td= byteSize(con.out_bytes, 2)
+                                td= numeral(con.in_msgs).format('0,0')
+                                td= numeral(con.out_msgs).format('0,0')
+                                td= numeral(con.in_bytes).format('0.00 b')
+                                td= numeral(con.out_bytes).format('0.00 b')
 
     hr
