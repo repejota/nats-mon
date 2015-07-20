@@ -1,0 +1,57 @@
+extends layout
+
+block content
+    .container-fluid.varz
+        h2 Variables
+        .row.info
+            .col-md-6
+                strong Started:
+                span= " " + moment(varz.start).format('MMMM Do YYYY, h:mm:ss a')
+            .col-md-6
+                strong Uptime:
+                span= " " + varz.uptime
+        .row.info
+            .col-md-6
+                strong In Bytes:
+                span= " " + byteSize(varz.in_bytes, 2)
+            .col-md-6
+                strong Out Bytes:
+                span= " " + byteSize(varz.out_bytes, 2)
+        .row.info
+            .col-md-6
+                strong In Messages:
+                span= " " + varz.in_msgs
+            .col-md-6
+                strong Out Messages:
+                span= " " + varz.out_msgs
+    hr
+    .container-fluid.connz
+        h2 Connections
+            small= " " + connz.num_connections
+        .row
+            .col-md-12
+                p Reports more detailed information on current connections.
+        .row
+            .col-md-12
+                table.table
+                    thead
+                        tr
+                            th cid
+                            th ip
+                            th port
+                            th in msgs
+                            th out msgs
+                            th in bytes
+                            th out bytes
+                    tbody
+                        each con in connz.connections
+                            tr
+                                td= con.cid
+                                td= con.ip
+                                td= con.port
+                                td= con.in_msgs
+                                td= con.out_msgs
+                                td= byteSize(con.in_bytes, 2)
+                                td= byteSize(con.out_bytes, 2)
+
+    hr
