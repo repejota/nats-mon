@@ -4,4 +4,11 @@ all:
 clean:
 	./node_modules/.bin/gulp clean
 
-.PHONY: all clean
+dist-clean:
+	./node_modules/.bin/gulp dist-clean
+
+lint: lint
+	#./node_modules/.bin/gulp jshint
+	./node_modules/.bin/gulp csslint
+
+.PHONY: all clean dist-clean lint

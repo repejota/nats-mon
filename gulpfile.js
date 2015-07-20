@@ -1,4 +1,20 @@
 var gulp = require('gulp');
+var csslint = require('gulp-csslint');
+var del = require('del');
+
+gulp.task('dist-clean', ['clean'], function() {
+    'use strict';
+
+    del([
+        'node_modules',
+        '.idea'
+    ], function(err, delfiles) {
+        if (err) {
+            return err;
+        }
+        return delfiles;
+    });
+});
 
 gulp.task('clean', function() {
     'use strict';
@@ -7,7 +23,7 @@ gulp.task('clean', function() {
 gulp.task('csslint', function() {
     'use strict';
 
-    return gulp.src('./public/css/**/*.css')
+    return gulp.src('./public/stylesheets/**/*.css')
     .pipe(csslint('.csslintrc'))
     .pipe(csslint.reporter())
     .pipe(csslint.failReporter());
