@@ -25,7 +25,7 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.locals.moment = require('moment');
-app.locals.byteSize = require('byte-size');
+app.locals.numeral = require('numeral');
 
 app.use('/', routes);
 
