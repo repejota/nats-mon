@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var jshint = require('gulp-jshint');
 var csslint = require('gulp-csslint');
 var coveralls = require('gulp-coveralls');
 var del = require('del');
@@ -16,6 +17,23 @@ gulp.task('dist-clean', ['clean'], function() {
         return delfiles;
     });
 });
+
+gulp.task('jshint', function() {
+    'use strict';
+
+    return gulp.src([
+            './bin/**/www',
+            './test/**/*.js',
+            './lib/**/*.js',
+            './public/javascripts/**/*.js',
+            './routes/**/*.js',
+            '*.js'
+        ])
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-reporter-jscs'))
+        .pipe(jshint.reporter('fail'));
+});
+
 
 gulp.task('clean', function() {
     'use strict';

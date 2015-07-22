@@ -7,8 +7,8 @@ clean:
 dist-clean:
 	./node_modules/.bin/gulp dist-clean
 
-lint: lint
-	#./node_modules/.bin/gulp jshint
+lint:
+	./node_modules/.bin/gulp jshint
 	./node_modules/.bin/gulp csslint
 
 test:
