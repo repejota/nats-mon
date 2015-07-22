@@ -24,9 +24,9 @@ gulp.task('csslint', function() {
     'use strict';
 
     return gulp.src('./public/stylesheets/**/*.css')
-    .pipe(csslint('.csslintrc'))
-    .pipe(csslint.reporter())
-    .pipe(csslint.failReporter());
+        .pipe(csslint('.csslintrc'))
+        .pipe(csslint.reporter())
+        .pipe(csslint.failReporter());
 });
 
 gulp.task('default', [
