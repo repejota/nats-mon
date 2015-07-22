@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var csslint = require('gulp-csslint');
+var coveralls = require('gulp-coveralls');
 var del = require('del');
 
 gulp.task('dist-clean', ['clean'], function() {
@@ -27,6 +28,12 @@ gulp.task('csslint', function() {
         .pipe(csslint('.csslintrc'))
         .pipe(csslint.reporter())
         .pipe(csslint.failReporter());
+});
+
+gulp.task('coveralls', function() {
+    "use strict";
+    gulp.src('./coverage/**/lcov.info')
+        .pipe(coveralls());
 });
 
 gulp.task('default', [
