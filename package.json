@@ -24,6 +24,8 @@
     "del": "^1.2.0",
     "gulp": "^3.9.0",
     "gulp-coveralls": "^0.1.4",
-    "gulp-csslint": "^0.1.5"
+    "gulp-csslint": "^0.1.5",
+    "mocha": "^2.2.5",
+    "should": "^7.0.2"
   }
 }
