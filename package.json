@@ -25,6 +25,7 @@
     "gulp": "^3.9.0",
     "gulp-coveralls": "^0.1.4",
     "gulp-csslint": "^0.1.5",
+    "istanbul": "^0.3.17",
     "mocha": "^2.2.5",
     "should": "^7.0.2"
   }

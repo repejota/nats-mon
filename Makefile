@@ -17,4 +17,8 @@ test:
 uitest:
 	./node_modules/.bin/casperjs test test/ui/suite.js
 
+cover:
+	./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/unit -- -R spec
+	./node_modules/.bin/gulp coveralls
+
 .PHONY: all clean dist-clean lint uitest test
