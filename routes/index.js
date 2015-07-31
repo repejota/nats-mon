@@ -5,33 +5,35 @@ var router = express.Router();
 
 var base = 'http://localhost:8222';
 
-router.get('/', function(req, res, next) {
+router.get('/api/connz', function(req, res, next) {
     'use strict';
-
-    var context = {
-        title: 'NATS.io monitor'
-    };
-
-    // varz
-    request(base + '/varz', function(error, response, body) {
+    request(base + '/connz', function(error, response, body) {
         if (!error && response.statusCode == 200) {
-            context.varz = JSON.parse(body);
-
-            // connz
-            request(base + '/connz', function(error, response, body) {
-                if (!error && response.statusCode == 200) {
-                    context.connz = JSON.parse(body);
-
-                    res.render('index', context);
-                } else {
-                    next(error);
-                }
-            });
-
+            res.json(JSON.parse(body));
         } else {
             next(error);
         }
     });
+});
+
+router.get('/api/varz', function(req, res, next) {
+    'use strict';
+    request(base + '/varz', function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            res.json(JSON.parse(body));
+        } else {
+            next(error);
+        }
+    });
+
+});
+
+router.get('/', function(req, res, next) {
+    'use strict';
+    var context = {
+        title: 'NATS.io monitor'
+    };
+    res.render('index', context);
 });
 
 module.exports = router;

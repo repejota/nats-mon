@@ -6,34 +6,34 @@ block content
         .row.info
             .col-md-6
                 strong Started:
-                span= " " + moment(varz.start).format('MMMM Do YYYY, h:mm:ss a')
+                span(id="start")
             .col-md-6
                 strong Uptime:
-                span= " " + varz.uptime
+                span(id="uptime")
         .row.info
             .col-md-6
                 strong In Bytes:
-                span= " " + numeral(varz.in_bytes).format('0.00 b')
+                span(id="inbytes")
             .col-md-6
                 strong Out Bytes:
-                span= " " + numeral(varz.out_bytes).format('0.00 b')
+                span(id="outbytes")
         .row.info
             .col-md-6
                 strong In Messages:
-                span= " " + numeral(varz.in_msgs).format('0,0')
+                span(id="inmsgs")
             .col-md-6
                 strong Out Messages:
-                span= " " + numeral(varz.out_msgs).format('0,0')
+                span(id="outmsgs")
     hr
     .container-fluid.connz
         h2 Connections
-            small= " " + connz.num_connections
+            small(id="numconnz")
         .row
             .col-md-12
                 p Reports more detailed information on current connections.
         .row
             .col-md-12
-                table.table
+                table.table(id="listconnz")
                     thead
                         tr
                             th cid
@@ -44,14 +44,5 @@ block content
                             th in bytes
                             th out bytes
                     tbody
-                        each con in connz.connections
-                            tr
-                                td= con.cid
-                                td= con.ip
-                                td= con.port
-                                td= numeral(con.in_msgs).format('0,0')
-                                td= numeral(con.out_msgs).format('0,0')
-                                td= numeral(con.in_bytes).format('0.00 b')
-                                td= numeral(con.out_bytes).format('0.00 b')
 
     hr
