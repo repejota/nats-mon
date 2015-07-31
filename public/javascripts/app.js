@@ -13,7 +13,7 @@
             connz = resp;
             updateConnz();
         });
-    };
+    }
 
     function updateVarz() {
         $('#start').html(moment(varz.start).format('MMMM Do YYYY, h:mm:ss a'));
@@ -22,7 +22,7 @@
         $('#outbytes').html(numeral(varz.out_bytes).format('0.00 b'));
         $('#inmsgs').html(numeral(varz.in_msgs).format('0,0'));
         $('#outmsgs').html(numeral(varz.out_msgs).format('0,0'));
-    };
+    }
 
     function updateConnz() {
         $('#numconnz').html(connz.num_connections);
@@ -39,7 +39,7 @@
             html += '</tr>';
             $('#listconnz tbody').append(html);
         });
-    };
+    }
 
     $(function() {
         setInterval(refresh, 2000);
