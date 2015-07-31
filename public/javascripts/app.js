@@ -34,8 +34,8 @@
             html += '<td class="port">' + element.port + '</td>';
             html += '<td class="in_msgs">' + numeral(element.in_msgs).format('0,0') + '</td>';
             html += '<td class="out_msgs">' + numeral(element.out_msgs).format('0,0') + '</td>';
-            html += '<td class="in_bytes">' + numeral(element.in_bytes).format('0,0') + '</td>';
-            html += '<td class="out_bytes">' + numeral(element.out_bytes).format('0,0') + '</td>';
+            html += '<td class="in_bytes">' + numeral(element.in_bytes).format('0.00 b') + '</td>';
+            html += '<td class="out_bytes">' + numeral(element.out_bytes).format('0.00 b') + '</td>';
             html += '</tr>';
             $('#listconnz tbody').append(html);
         });
