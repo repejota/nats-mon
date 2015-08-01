@@ -1,7 +1,7 @@
 # nats-mon
 =============
 
-![Alt text](/screenshot.gif "Screenshot")
+![Alt text](/screenshot.gif?raw=true "Screenshot")
 
 ## Table of contents
 
