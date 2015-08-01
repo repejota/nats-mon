@@ -1,38 +1,77 @@
 (function($, window, document) {
     'use strict';
 
+    /**
+     * Current timestamp in miliseconds
+     */
     var now;
+
+    /**
+     * Chart series
+     *
+     * @type {{bytesps: Array, msgsps: Array}}
+     */
     var series =   {
         bytesps: [],
         msgsps: []
     };
+
+    /**
+     * Varz form server
+     *
+     * @type {{in_bytes: number, mem: number}}
+     */
     var varz = {
         in_bytes: 0,
         mem: 0
     };
+
+    /**
+     * Connz from server
+     */
     var connz;
 
+    /**
+     * Refresh datasource
+     */
     function refresh() {
         now = ((new Date()).getTime() / 1000) | 0;
+
+        // Fetch varz
         $.getJSON('http://localhost:3000/api/varz', function(resp) {
             varz = resp;
-            updateVarz();
+            // Fetch conz
+            $.getJSON('http://localhost:3000/api/connz', function(resp) {
+                connz = resp;
+                updateVarz();
+                updateConnz();
+            });
         });
-        $.getJSON('http://localhost:3000/api/connz', function(resp) {
-            connz = resp;
-            updateConnz();
-        });
+
     }
 
+    /**
+     * Update variables widgets
+     */
     function updateVarz() {
-        $('#start').html(moment(varz.start).format('MMMM Do YYYY, h:mm:ss a'));
-        $('#uptime').html(varz.uptime);
-        $('#inbytes').html(numeral(varz.in_bytes).format('0.00 b'));
-        $('#outbytes').html(numeral(varz.out_bytes).format('0.00 b'));
-        $('#inmsgs').html(numeral(varz.in_msgs).format('0,0'));
-        $('#outmsgs').html(numeral(varz.out_msgs).format('0,0'));
+        var start = moment(varz.start).format('MMMM Do YYYY, h:mm:ss a');
+        var uptime = moment(varz.start).fromNow();
+        var in_bytes = numeral(varz.in_bytes).format('0.00 b');
+        var out_bytes = numeral(varz.out_bytes).format('0.00 b');
+        var in_msgs = numeral(varz.in_msgs).format('0,0');
+        var out_msgs = numeral(varz.out_msgs).format('0,0');
+
+        $('#start').html(start);
+        $('#uptime').html(uptime);
+        $('#inbytes').html(in_bytes);
+        $('#outbytes').html(out_bytes);
+        $('#inmsgs').html(in_msgs);
+        $('#outmsgs').html(out_msgs);
     }
 
+    /**
+     * Update connection widgets
+     */
     function updateConnz() {
         $('#numconnz').html(connz.num_connections);
         $('#listconnz > tbody').html("");
@@ -50,6 +89,9 @@
         });
     }
 
+    /**
+     * Start chart input bytes
+     */
     function chartInBytes()  {
         var prevBytes = 0;
         var prevMsgs = 0;
@@ -84,10 +126,16 @@
         }, 1000);
     }
 
+    /**
+     * Update chart input bytes
+     *
+     * @param prevBytes
+     * @param prevMsgs
+     */
     function updateInByptes(prevBytes, prevMsgs) {
         var in_bytes = (varz.in_bytes - prevBytes) / 1024;
         var in_msgs = varz.in_msgs - prevMsgs;
-        var now = ((new Date()).getTime() / 1000) | 0;
+
         if (prevBytes != 0) {
             if (series.bytesps.length > 100) {
                 series.bytesps.shift();
@@ -108,8 +156,12 @@
         }
     }
 
+    // Initialize dashboard
     $(function() {
+        // start charts
         chartInBytes();
+
+        // render dashboard
         setInterval(refresh, 1000);
     });
 }(window.jQuery, window, document));
