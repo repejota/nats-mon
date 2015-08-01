@@ -93,8 +93,12 @@
      * Start chart input bytes
      */
     function chartInBytes()  {
-        var prevBytes = 0;
-        var prevMsgs = 0;
+
+        var prevInBytes = 0;
+        var prevInMsgs = 0;
+        var prevOutBytes = 0;
+        var prevOutMsgs = 0;
+
         var graph = new Rickshaw.Graph({
             element: document.querySelector("#chart"),
             height: 200,
@@ -119,9 +123,11 @@
         });
         graph.render();
         setInterval(function() {
-            updateInByptes(prevBytes, prevMsgs);
-            prevBytes = varz.in_bytes ||  0;
-            prevMsgs = varz.in_msgs ||  0;
+            updateInByptes(prevInBytes, prevInMsgs, prevOutBytes, prevOutMsgs);
+            prevInBytes = varz.in_bytes ||  0;
+            prevInMsgs = varz.in_msgs ||  0;
+            prevOutBytes = varz.out_bytes || 0;
+            prevOutMsgs = varz.out_msgs || 0;
             graph.update();
         }, 1000);
     }
@@ -132,26 +138,33 @@
      * @param prevBytes
      * @param prevMsgs
      */
-    function updateInByptes(prevBytes, prevMsgs) {
-        var in_bytes = (varz.in_bytes - prevBytes) / 1024;
-        var in_msgs = varz.in_msgs - prevMsgs;
+    function updateInByptes(prevInBytes, prevInMsgs, prevOutBytes, prevOutMsgs) {
+        var in_bytes = (varz.in_bytes - prevInBytes) / 1024;
+        var in_msgs = varz.in_msgs - prevInMsgs;
+        var out_bytes = (varz.out_bytes - prevOutBytes) / 1024;
+        var out_msgs = varz.out_msgs - prevOutMsgs;
+        var total_bytes = in_bytes + out_bytes;
+        var total_msgs = in_msgs + out_msgs;
 
-        if (prevBytes != 0) {
+        $('#bytesps').html(numeral(total_bytes).format('0.00') +" Kb");
+        $('#msgsps').html(total_msgs);
+
+        if (prevInBytes != 0) {
             if (series.bytesps.length > 100) {
                 series.bytesps.shift();
             }
             series.bytesps.push({
                 x: now,
-                y: in_bytes
+                y: total_bytes
             });
         }
-        if (prevMsgs != 0) {
+        if (prevInMsgs != 0) {
             if (series.msgsps.length > 100) {
                 series.msgsps.shift();
             }
             series.msgsps.push({
                 x: now,
-                y: in_msgs
+                y: total_msgs
             });
         }
     }
