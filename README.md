@@ -1,13 +1,12 @@
 # nats-mon
 =============
 
-![Alt text](/screenshot.gif?raw=true "Screenshot")
-
 ## Table of contents
 
 - [Quick Start](#quick-start)
 - [Build status](#build-status)
 - [Coverage](#coverage)
+- [Screenshot](#screenshot)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Contributing](#contributing)
 - [Versioning](#versioning)
@@ -46,6 +45,10 @@ Now you can open nats-mon on your browser through http://localhost:3000
 
 * Master: [![Coverage Status](https://coveralls.io/repos/repejota/nats-mon/badge.svg?branch=master&service=github)](https://coveralls.io/github/repejota/nats-mon?branch=master)
 * Develop: [![Coverage Status](https://coveralls.io/repos/repejota/nats-mon/badge.svg?branch=develop&service=github)](https://coveralls.io/github/repejota/nats-mon?branch=develop)
+
+## Screenshot
+
+![Alt text](/screenshot.gif?raw=true "Screenshot")
 
 ## Bugs and feature requests
 
