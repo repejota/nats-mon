@@ -17,12 +17,10 @@
         "realtime"
     ],
     "author": "Raül Pérez <repejota@gmail.com>",
-    "contributors": [
-      {
+    "contributors": [{
         "name": "Adrià Cidre",
         "email": "adria.cidre@gmail.com"
-      }
-    ],
+    }],
     "license": "MIT",
     "dependencies": {
         "body-parser": "~1.13.2",
