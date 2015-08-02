@@ -50,6 +50,8 @@
 
     }
 
+    var charti;
+
     /**
      * Update variables widgets
      */
@@ -92,7 +94,7 @@
     /**
      * Start chart input bytes
      */
-    function chartInBytes()  {
+    function chartOutBytes()  {
 
         var prevInBytes = 0;
         var prevInMsgs = 0;
@@ -122,8 +124,56 @@
             element: document.getElementById('y_axis'),
         });
         graph.render();
-        setInterval(function() {
-            updateInByptes(prevInBytes, prevInMsgs, prevOutBytes, prevOutMsgs);
+        charti = setInterval(function() {
+            updateInputOutput(prevInBytes, prevInMsgs, prevOutBytes, prevOutMsgs);
+            prevInBytes = varz.in_bytes ||  0;
+            prevInMsgs = varz.in_msgs ||  0;
+            prevOutBytes = varz.out_bytes || 0;
+            prevOutMsgs = varz.out_msgs || 0;
+            graph.update();
+        }, 1000);
+    }
+
+    /**
+     * Start chart input bytes
+     */
+    function chartInBytes()  {
+
+        var prevInBytes = 0;
+        var prevInMsgs = 0;
+        var prevOutBytes = 0;
+        var prevOutMsgs = 0;
+
+        var graph = new Rickshaw.Graph({
+            element: document.querySelector("#chart"),
+            height: 200,
+            series: [{
+                color: "#2980b9",
+                data: series.msgsps,
+                name: 'Messages'
+            },
+            {
+                color: "#3498db",
+                data: series.bytesps,
+                name: 'Kbytes'
+            }]
+        });
+        var hover = new Rickshaw.Graph.HoverDetail({
+            graph: graph
+        });
+
+        var axes = new Rickshaw.Graph.Axis.Time({
+            graph: graph
+        });
+        var y_axis = new Rickshaw.Graph.Axis.Y({
+            graph: graph,
+            orientation: 'left',
+            tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+            element: document.getElementById('y_axis'),
+        });
+        graph.render();
+        charti = setInterval(function() {
+            updateInputOutput(prevInBytes, prevInMsgs, prevOutBytes, prevOutMsgs);
             prevInBytes = varz.in_bytes ||  0;
             prevInMsgs = varz.in_msgs ||  0;
             prevOutBytes = varz.out_bytes || 0;
@@ -138,7 +188,7 @@
      * @param prevBytes
      * @param prevMsgs
      */
-    function updateInByptes(prevInBytes, prevInMsgs, prevOutBytes, prevOutMsgs) {
+    function updateInputOutput(prevInBytes, prevInMsgs, prevOutBytes, prevOutMsgs) {
         var in_bytes = (varz.in_bytes - prevInBytes) / 1024;
         var in_msgs = varz.in_msgs - prevInMsgs;
         var out_bytes = (varz.out_bytes - prevOutBytes) / 1024;
