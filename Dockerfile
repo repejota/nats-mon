@@ -7,4 +7,6 @@ RUN cd /tmp && wget https://github.com/nats-io/gnatsd/releases/download/v0.6.0/g
 RUN rm -rf /opts/nats-mon && mkdir -p /opt/nats-mon && git clone https://github.com/repejota/nats-mon.git /opt/nats-mon
 RUN cd /opt/nats-mon && npm install
 RUN cd /opt/nats-mon && npm start &
-CMD /bin/bash
+WORKDIR /opt/nats-mon
+CMD ["npm", "start"]
+EXPOSE 3080
