@@ -9,3 +9,4 @@ RUN git clone https://github.com/repejota/nats-mon.git /opt/nats-mon
 RUN /opt/gnatsd/gnatsd -m 8222 &
 RUN cd /opt/nats-mon && npm install
 RUN cd /opt/nats-mon && npm start &
+CMD /bin/bash

@@ -21,4 +21,7 @@ cover:
 	./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/unit -- -R spec
 	./node_modules/.bin/gulp coveralls
 
+docker:
+	docker build -t nats-mon .
+
 .PHONY: all clean dist-clean lint uitest test
