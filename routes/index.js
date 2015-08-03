@@ -3,7 +3,7 @@ var request = require('request');
 
 var router = express.Router();
 
-var base = 'http://localhost:8222';
+var base = config.monitor;
 
 router.get('/api/connz', function(req, res, next) {
     'use strict';
@@ -34,6 +34,7 @@ router.get('/', function(req, res, next) {
         title: 'NATS.io monitor'
     };
     res.render('index', context);
+
 });
 
 module.exports = router;

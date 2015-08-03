@@ -1,3 +1,5 @@
+var config = require('./config.json'); 
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -26,7 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.locals.moment = require('moment');
 app.locals.numeral = require('numeral');
-
 app.use('/', routes);
 
 // catch 404 and forward to error handler
