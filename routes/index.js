@@ -1,3 +1,4 @@
+var config = require('../config.json');
 var express = require('express');
 var request = require('request');
 
