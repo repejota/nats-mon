@@ -9,4 +9,4 @@ RUN cd /opt/nats-mon && npm install
 RUN cd /opt/nats-mon && npm start &
 WORKDIR /opt/nats-mon
 CMD ["npm", "start"]
-EXPOSE 3080
+EXPOSE 3000
