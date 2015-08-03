@@ -65,9 +65,22 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-     sudo apt-get update
-     sudo apt-get install -y apache2
-     sudo apt-get install -y vim-nox wget golang nodejs nodejs-legacy
-
+    sudo apt-get update
+    sudo apt-get install -y apache2
+    sudo apt-get install -y vim-nox git wget golang nodejs npm nodejs-legacy
+    cd /tmp
+    rm /tmp/gnatsd-v0.6.0-linux-amd64.tar.gz
+    wget -q https://github.com/nats-io/gnatsd/releases/download/v0.6.0/gnatsd-v0.6.0-linux-amd64.tar.gz
+    rm -rf /opt/gnatsd
+    mkdir -p /opt/gnatsd
+    cd /opt/gnatsd
+    tar xvzmf /tmp/gnatsd-v0.6.0-linux-amd64.tar.gz
+    cd /root
+    /opt/gnatsd/gnatsd -m 8222 &
+    rm -rf /opt/nats-mon
+    git clone https://github.com/repejota/nats-mon.git /opt/nats-mon
+    cd /opt/nats-mon
+    npm install
+    chown vagrant:vagrant -R /opt
   SHELL
 end
