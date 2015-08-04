@@ -6,6 +6,10 @@ var router = express.Router();
 
 var base = config.monitor;
 
+router.get('/api/config', function(req, res, next) {
+  res.json(config);
+});
+
 router.get('/api/connz', function(req, res, next) {
     'use strict';
     request(base + '/connz', function(error, response, body) {
@@ -37,5 +41,6 @@ router.get('/', function(req, res, next) {
     res.render('index', context);
 
 });
+
 
 module.exports = router;

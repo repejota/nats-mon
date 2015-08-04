@@ -38,10 +38,10 @@
         now = ((new Date()).getTime() / 1000) | 0;
 
         // Fetch varz
-        $.getJSON('http://localhost:3000/api/varz', function(resp) {
+        $.getJSON(config.server + '/api/varz', function(resp) {
             varz = resp;
             // Fetch conz
-            $.getJSON('http://localhost:3000/api/connz', function(resp) {
+            $.getJSON(config.server + '/api/connz', function(resp) {
                 connz = resp;
                 updateVarz();
                 updateConnz();
@@ -131,7 +131,7 @@
             prevOutBytes = varz.out_bytes || 0;
             prevOutMsgs = varz.out_msgs || 0;
             graph.update();
-        }, 1000);
+        }, config.interval);
     }
 
     /**
@@ -179,7 +179,7 @@
             prevOutBytes = varz.out_bytes || 0;
             prevOutMsgs = varz.out_msgs || 0;
             graph.update();
-        }, 1000);
+        }, config.interval);
     }
 
     /**
@@ -189,9 +189,9 @@
      * @param prevMsgs
      */
     function updateInputOutput(prevInBytes, prevInMsgs, prevOutBytes, prevOutMsgs) {
-        var in_bytes = (varz.in_bytes - prevInBytes) / 1024;
+        var in_bytes = (varz.in_bytes - prevInBytes) / 1000;
         var in_msgs = varz.in_msgs - prevInMsgs;
-        var out_bytes = (varz.out_bytes - prevOutBytes) / 1024;
+        var out_bytes = (varz.out_bytes - prevOutBytes) / 1000;
         var out_msgs = varz.out_msgs - prevOutMsgs;
         var total_bytes = in_bytes + out_bytes;
         var total_msgs = in_msgs + out_msgs;
@@ -219,12 +219,18 @@
         }
     }
 
+    var config;
+
     // Initialize dashboard
     $(function() {
-        // start charts
-        chartInBytes();
+        $.getJSON('/api/config', function(json) {
+          config = json;
 
-        // render dashboard
-        setInterval(refresh, 1000);
+          // start charts
+          chartInBytes();
+
+          // render dashboard
+          setInterval(refresh, config.interval);
+        });
     });
 }(window.jQuery, window, document));
