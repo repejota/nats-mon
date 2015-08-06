@@ -1,9 +1,27 @@
+var config = require('../config.json');
 var express = require('express');
 var request = require('request');
+var os = require('os');
 
 var router = express.Router();
 
-var base = 'http://localhost:8222';
+var base = config.monitor;
+
+router.get('/api/serverz', function(req, res, next) {
+    var serverz = {
+        hostname: os.hostname(),
+        loadavg: os.loadavg(),
+        uptime: os.uptime(),
+        freemem: os.freemem(),
+        totalmem: os.totalmem(),
+        cpus: os.cpus()
+    };
+    res.json(serverz);
+});
+
+router.get('/api/config', function(req, res, next) {
+  res.json(config);
+});
 
 router.get('/api/connz', function(req, res, next) {
     'use strict';
@@ -34,6 +52,8 @@ router.get('/', function(req, res, next) {
         title: 'NATS.io monitor'
     };
     res.render('index', context);
+
 });
+
 
 module.exports = router;

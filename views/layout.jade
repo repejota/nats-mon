@@ -5,6 +5,7 @@ html(lang='en')
         meta( http-equiv='X-UA-Compatible', content='IE=edge' )
         meta( name='viewport', content='width=device-width, initial-scale=1.0' )
         link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel="stylesheet")
+        link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/rickshaw/1.5.1/rickshaw.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
     body
         nav.navbar.navbar-default( role="navigation" )
@@ -14,7 +15,8 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
             span.icon-bar
-            a.navbar-brand(href="/") NATS
+            a.navbar-brand(href="/")
+                img(src="http://nats.io/assets/img/brand/nats-logo@2x.png")
         #navbar-inverse.collapse.navbar-collapse
             ul.nav.navbar-nav
                 //li.active: a( href="#") Home
@@ -23,4 +25,6 @@ html(lang='en')
         script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
         script(src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js")
         script(src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js")
+        script(src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js")
+        script(src="//cdnjs.cloudflare.com/ajax/libs/rickshaw/1.5.1/rickshaw.min.js")
         script(src="/javascripts/app.js")
