@@ -1,7 +1,7 @@
 {
     "name": "nats-mon",
     "description": "A realtime nats.io monitor",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "private": true,
     "scripts": {
         "start": "./node_modules/.bin/nodemon ./bin/www"
