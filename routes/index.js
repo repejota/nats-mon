@@ -1,10 +1,23 @@
 var config = require('../config.json');
 var express = require('express');
 var request = require('request');
+var os = require('os');
 
 var router = express.Router();
 
 var base = config.monitor;
+
+router.get('/api/serverz', function(req, res, next) {
+    var serverz = {
+        hostname: os.hostname(),
+        loadavg: os.loadavg(),
+        uptime: os.uptime(),
+        freemem: os.freemem(),
+        totalmem: os.totalmem(),
+        cpus: os.cpus()
+    };
+    res.json(serverz);
+});
 
 router.get('/api/config', function(req, res, next) {
   res.json(config);
