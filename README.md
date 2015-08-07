@@ -1,5 +1,6 @@
 # nats-mon
-=============
+
+A realtime web based NATS monitor
 
 ## Table of contents
 
@@ -12,8 +13,6 @@
 - [Versioning](#versioning)
 - [Creators](#creators)
 - [Copyright and license](#copyright-and-license)
-
-A realtime web based NATS monitor
 
 ## Quick start
 
