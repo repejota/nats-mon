@@ -2,11 +2,6 @@
     'use strict';
 
     /**
-     * Current timestamp in miliseconds
-     */
-    var now;
-
-    /**
      * Chart series
      *
      * @type {{bytesps: Array, msgsps: Array}}
@@ -35,8 +30,6 @@
      * Refresh datasource
      */
     function refresh() {
-        now = ((new Date()).getTime() / 1000) | 0;
-
         // Fetch varz
         $.getJSON(config.server + '/api/varz', function(resp) {
             varz = resp;
@@ -198,6 +191,8 @@
 
         $('#bytesps').html(numeral(total_bytes).format('0.00') +" Kb");
         $('#msgsps').html(total_msgs);
+
+        var now = ((new Date(varz.now)).getTime() / 1000) | 0;
 
         if (prevInBytes != 0) {
             if (series.bytesps.length > 100) {
