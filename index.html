@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Nats-mon by repejota</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Nats-mon</h1>
+      <h2 class="project-tagline">A realtime web based NATS monitor</h2>
+      <a href="https://github.com/repejota/nats-mon" class="btn">View on GitHub</a>
+      <a href="https://github.com/repejota/nats-mon/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/repejota/nats-mon/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="nats-mon" class="anchor" href="#nats-mon" aria-hidden="true"><span class="octicon octicon-link"></span></a>nats-mon</h1>
+
+<p>A realtime web based NATS monitor</p>
+
+<h2>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of contents</h2>
+
+<ul>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#build-status">Build status</a></li>
+<li><a href="#coverage">Coverage</a></li>
+<li><a href="#screenshot">Screenshot</a></li>
+<li><a href="#bugs-and-feature-requests">Bugs and feature requests</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#versioning">Versioning</a></li>
+<li><a href="#creators">Creators</a></li>
+<li><a href="#copyright-and-license">Copyright and license</a></li>
+</ul>
+
+<h2>
+<a id="quick-start" class="anchor" href="#quick-start" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick start</h2>
+
+<p>Install nats-mon</p>
+
+<pre><code>git clone git@github.com:repejota/nats-mon.git
+cd  nats-mon
+npm install
+</code></pre>
+
+<p>Run nats-mon</p>
+
+<pre><code>npm start
+</code></pre>
+
+<p>You'll also gnats running in developer mode</p>
+
+<pre><code>./gnatsd -D -V -m 8222
+</code></pre>
+
+<p>Now you can open nats-mon on your browser through http://localhost:3000</p>
+
+<h2>
+<a id="build-status" class="anchor" href="#build-status" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build status</h2>
+
+<ul>
+<li>Master: <a href="https://travis-ci.org/repejota/nats-mon"><img src="https://travis-ci.org/repejota/nats-mon.svg?branch=master" alt="Build Status"></a>
+</li>
+<li>Develop: <a href="https://travis-ci.org/repejota/nats-mon"><img src="https://travis-ci.org/repejota/nats-mon.svg?branch=develop" alt="Build Status"></a>
+</li>
+</ul>
+
+<h2>
+<a id="coverage" class="anchor" href="#coverage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Coverage</h2>
+
+<ul>
+<li>Master: <a href="https://coveralls.io/github/repejota/nats-mon?branch=master"><img src="https://coveralls.io/repos/repejota/nats-mon/badge.svg?branch=master&amp;service=github" alt="Coverage Status"></a>
+</li>
+<li>Develop: <a href="https://coveralls.io/github/repejota/nats-mon?branch=develop"><img src="https://coveralls.io/repos/repejota/nats-mon/badge.svg?branch=develop&amp;service=github" alt="Coverage Status"></a>
+</li>
+</ul>
+
+<h2>
+<a id="screenshot" class="anchor" href="#screenshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshot</h2>
+
+<p><img src="https://github.com/repejota/nats-mon/raw/develop/screenshot.gif?raw=true" alt="Alt text" title="Screenshot"></p>
+
+<h2>
+<a id="bugs-and-feature-requests" class="anchor" href="#bugs-and-feature-requests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bugs and feature requests</h2>
+
+<p>Have a bug or a feature request? Please first read the
+<a href="https://github.com/repejota/nats-mon/blob/master/CONTRIBUTING.md#using-the-issue-tracker">issue guidelines</a>
+and search for existing and closed issues. If your problem or idea is not
+addressed yet,
+<a href="https://github.com/repejota/nats-mon/issues/new">please open a new issue</a>.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Please read through our
+<a href="https://github.com/repejota/nats-mon/blob/master/CONTRIBUTING.md">contributing guidelines</a>.
+Included are directions for opening issues, coding standards, and notes on
+development.</p>
+
+<p>Moreover, if your pull request contains patches or features, you must include
+relevant unit tests.</p>
+
+<h2>
+<a id="versioning" class="anchor" href="#versioning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Versioning</h2>
+
+<p>For transparency into our release cycle and in striving to maintain backward
+compatibility, this project is maintained under
+<a href="http://semver.org/">the Semantic Versioning guidelines</a>. Sometimes we screw
+up, but we'll adhere to those rules whenever possible.</p>
+
+<h2>
+<a id="creators" class="anchor" href="#creators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creators</h2>
+
+<p><strong>Raül Pérez</strong></p>
+
+<ul>
+<li><a href="https://twitter.com/repejota">https://twitter.com/repejota</a></li>
+<li><a href="https://github.com/repejota">https://github.com/repejota</a></li>
+</ul>
+
+<p><strong>Adrià Cidre</strong></p>
+
+<ul>
+<li><a href="https://twitter.com/adriacidre">https://twitter.com/adriacidre</a></li>
+<li><a href="https://github.com/adriacidre">https://github.com/adriacidre</a></li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Code and documentation copyright 2015 nats-mon authors.</p>
+
+<p>By contributing your code, you agree to license your contribution under the
+<a href="LICENSE">MIT license</a>.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/repejota/nats-mon">Nats-mon</a> is maintained by <a href="https://github.com/repejota">repejota</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-50688511-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
