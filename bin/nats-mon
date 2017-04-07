@@ -7,6 +7,10 @@
 var app = require('../app');
 var debug = require('debug')('nats-mon:server');
 var http = require('http');
+var program = require('commander');
+
+// TODO Get version from package json
+program.version('0.2.0').parse(process.argv);
 
 /**
  * Get port from environment and store in Express.
