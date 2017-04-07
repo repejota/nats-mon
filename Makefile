@@ -24,4 +24,10 @@ cover:
 docker:
 	docker build -t nats-mon .
 
+serve:
+	npm start
+
+serve-dev:
+	npm run-script start-dev
+
 .PHONY: all clean dist-clean lint uitest test

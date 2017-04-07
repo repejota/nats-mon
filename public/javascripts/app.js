@@ -194,7 +194,7 @@
 
         var now = ((new Date(varz.now)).getTime() / 1000) | 0;
 
-        if (prevInBytes != 0) {
+        if (prevInBytes !== 0) {
             if (series.bytesps.length > 100) {
                 series.bytesps.shift();
             }
@@ -203,7 +203,7 @@
                 y: total_bytes
             });
         }
-        if (prevInMsgs != 0) {
+        if (prevInMsgs !== 0) {
             if (series.msgsps.length > 100) {
                 series.msgsps.shift();
             }

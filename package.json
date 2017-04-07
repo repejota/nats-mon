@@ -2,9 +2,10 @@
     "name": "nats-mon",
     "description": "A realtime nats.io monitor",
     "version": "0.2.0",
-    "private": true,
+    "private": false,
     "scripts": {
-        "start": "./node_modules/.bin/nodemon ./bin/www"
+        "start-dev": "./node_modules/.bin/nodemon ./bin/www",
+        "start": "./bin/www"
     },
     "repository": {
         "type": "git",
