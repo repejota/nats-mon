@@ -35,14 +35,14 @@ You will also need gnatsd running with monitoring enabled:
 
 Now you can open nats-mon on your browser through http://localhost:3000
 
-## Environment variables
+## Environment variables
 
 nats-mon support the following environment variables:
 
 * `NATSMON_SERVER_ADDRESS` : Server address, by default `localhost`.
 * `NATSMON_SERVER_PORT` : Server port, by default `3000`.
 
-## More options
+## More options
 
 nats-mon support the following options and command line flags:
 
@@ -61,12 +61,12 @@ $ nats-mon --help
     --server-port [port]        Server port
 ```
 
-## Build status
+## Build status
 
 * Master: [![Build Status](https://travis-ci.org/repejota/nats-mon.svg?branch=master)](https://travis-ci.org/repejota/nats-mon)
 * Develop: [![Build Status](https://travis-ci.org/repejota/nats-mon.svg?branch=develop)](https://travis-ci.org/repejota/nats-mon)
 
-## Coverage
+## Coverage
 
 * Master: [![Coverage Status](https://coveralls.io/repos/repejota/nats-mon/badge.svg?branch=master&service=github)](https://coveralls.io/github/repejota/nats-mon?branch=master)
 * Develop: [![Coverage Status](https://coveralls.io/repos/repejota/nats-mon/badge.svg?branch=develop&service=github)](https://coveralls.io/github/repejota/nats-mon?branch=develop)
