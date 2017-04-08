@@ -18,7 +18,7 @@ A realtime web based NATS monitor
 
 Install nats-mon
 ```
-git clone git@github.com:repejota/nats-mon.git
+git clone https://github.com/repejota/nats-mon.git
 cd  nats-mon
 npm install
 ```
@@ -28,12 +28,38 @@ Run nats-mon
 npm start
 ```
 
-You'll also gnats running in developer mode
+You will also need gnatsd running with monitoring enabled:
 ```
-./gnatsd -D -V -m 8222
+./gnatsd -m 8222
 ```
 
 Now you can open nats-mon on your browser through http://localhost:3000
+
+## Environment variables
+
+nats-mon support the following environment variables:
+
+* `NATSMON_SERVER_ADDRESS` : Server address, by default `localhost`.
+* `NATSMON_SERVER_PORT` : Server port, by default `3000`.
+
+## More options
+
+nats-mon support the following options and command line flags:
+
+This flags, overrides the values from the environment variables above.
+
+```
+$ nats-mon --help
+
+  Usage: nats-mon [options]
+
+  Options:
+
+    -h, --help                  output usage information
+    -V, --version               output the version number
+    --server-address [address]  Server address
+    --server-port [port]        Server port
+```
 
 ## Build status
 
