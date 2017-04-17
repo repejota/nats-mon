@@ -51,8 +51,8 @@
     function updateVarz() {
         var start = moment(varz.start).format('MMMM Do YYYY, h:mm:ss a');
         var uptime = moment(varz.start).fromNow();
-        var in_bytes = numeral(varz.in_bytes).format('0.00 B');
-        var out_bytes = numeral(varz.out_bytes).format('0.00 B');
+        var in_bytes = numeral(varz.in_bytes).format('0.00 b');
+        var out_bytes = numeral(varz.out_bytes).format('0.00 b');
         var in_msgs = numeral(varz.in_msgs).format('0,0');
         var out_msgs = numeral(varz.out_msgs).format('0,0');
 
@@ -77,8 +77,8 @@
             html += '<td class="port">' + element.port + '</td>';
             html += '<td class="in_msgs">' + numeral(element.in_msgs).format('0,0') + '</td>';
             html += '<td class="out_msgs">' + numeral(element.out_msgs).format('0,0') + '</td>';
-            html += '<td class="in_bytes">' + numeral(element.in_bytes).format('0.00 B') + '</td>';
-            html += '<td class="out_bytes">' + numeral(element.out_bytes).format('0.00 B') + '</td>';
+            html += '<td class="in_bytes">' + numeral(element.in_bytes).format('0.00 b') + '</td>';
+            html += '<td class="out_bytes">' + numeral(element.out_bytes).format('0.00 b') + '</td>';
             html += '</tr>';
             $('#listconnz tbody').append(html);
         });
@@ -148,7 +148,7 @@
             {
                 color: "#3498db",
                 data: series.bytesps,
-                name: 'kbytes'
+                name: 'Kbytes'
             }]
         });
         var hover = new Rickshaw.Graph.HoverDetail({
@@ -189,7 +189,7 @@
         var total_bytes = in_bytes + out_bytes;
         var total_msgs = in_msgs + out_msgs;
 
-        $('#bytesps').html(numeral(total_bytes).format('0.00') +" kB");
+        $('#bytesps').html(numeral(total_bytes).format('0.00') +" Kb");
         $('#msgsps').html(total_msgs);
 
         var now = ((new Date(varz.now)).getTime() / 1000) | 0;
