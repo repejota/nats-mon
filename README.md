@@ -115,7 +115,7 @@ up, but we'll adhere to those rules whenever possible.
 
 ## License
 
-Code and documentation copyright 2015 nats-mon authors.
+Code and documentation copyright 2015-2017 nats-mon authors.
 
 By contributing your code, you agree to license your contribution under the
 [MIT license](LICENSE).
