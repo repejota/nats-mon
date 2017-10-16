@@ -1,3 +1,6 @@
+DOCKER-IMAGE="repejota/nats-mon"
+VERSION=`cat VERSION`
+
 all:
 	./node_modules/.bin/gulp default
 
@@ -22,7 +25,11 @@ cover:
 	./node_modules/.bin/gulp coveralls
 
 docker:
-	docker build -t nats-mon .
+	docker build -t $(DOCKER-IMAGE) .
+	docker tag $(DOCKER-IMAGE) $(DOCKER-IMAGE):$(VERSION)
+	docker push $(DOCKER-IMAGE)
+	docker rmi $(DOCKER-IMAGE)
+	docker rmi $(DOCKER-IMAGE):$(VERSION)
 
 serve:
 	npm start
